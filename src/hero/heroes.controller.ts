@@ -1,8 +1,9 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 import { Hero, HeroById } from 'interfaces/hero';
+import { Observable, from } from 'rxjs';
 
-@Controller()
+@Controller('hero')
 export class HeroesController {
   heroes: Hero[] = [
     { id: 1, name: 'John' },
@@ -10,7 +11,14 @@ export class HeroesController {
   ];
 
   @GrpcMethod('HeroService', 'FindOne')
-  findOne(data: HeroById) {
+  findOne(data: HeroById): Hero {
+    console.log(data);
+
     return this.heroes.find(({ id }) => id === data.id);
+  }
+
+  @GrpcMethod('HeroService', 'FindAll')
+  findAll(): Observable<Hero> {
+    return from(this.heroes);
   }
 }
