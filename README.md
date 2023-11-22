@@ -22,9 +22,17 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Work in progress
+
+I'm still working on this project. I will add more examples and documentation soon. At the moment, tests are not working. I will try to fix this.
+
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a template for NestJS project with gRPC microservice. It is a simple example of how to use NestJS with gRPC.
+
+## How to use
+
+Click on the "Use this template" button on the top of the page. Then clone your repository.
 
 ## Installation
 
@@ -41,8 +49,6 @@ $ npm run start
 # watch mode
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
 ## Test
@@ -51,23 +57,18 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
 # test coverage
 $ npm run test:cov
 ```
 
-## Support
+## Contact
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Author - Daan Grob
+- LinkedIn - [Daan Grob](https://www.linkedin.com/in/daangrob/)
+- GitHub - [Daan Grob](https://github.com/DaanGrob05)
 
-## Stay in touch
+## Credits to NestJS
 
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
