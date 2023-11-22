@@ -17,15 +17,19 @@ export const HERO_PACKAGE_NAME = "hero";
 
 export interface HeroesServiceClient {
   findOne(request: HeroById): Observable<Hero>;
+
+  findAll(request: HeroById): Observable<Hero>;
 }
 
 export interface HeroesServiceController {
   findOne(request: HeroById): Promise<Hero> | Observable<Hero> | Hero;
+
+  findAll(request: HeroById): Observable<Hero>;
 }
 
 export function HeroesServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["findOne"];
+    const grpcMethods: string[] = ["findOne", "findAll"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("HeroesService", method)(constructor.prototype[method], method, descriptor);

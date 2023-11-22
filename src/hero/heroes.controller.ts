@@ -1,6 +1,6 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { Hero, HeroById } from 'interfaces/hero';
+import { Hero, HeroById } from 'interfaces/src/hero/hero';
 import { Observable, from } from 'rxjs';
 
 @Controller('hero')
@@ -21,7 +21,7 @@ export class HeroesController {
     }
   }
 
-  @GrpcMethod('HeroesService', 'FindAll')
+  @GrpcMethod('HeroesService')
   findAll(): Observable<Hero> {
     return from(this.heroes);
   }

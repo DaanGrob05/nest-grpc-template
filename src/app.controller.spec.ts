@@ -1,22 +1,26 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { HeroModule } from './hero/hero.module';
+import { GrpcReflectionModule } from 'nestjs-grpc-reflection';
+import { grpcClientOptions } from './grpc-client.options';
+import { HeroesController } from './hero/heroes.controller';
 
 describe('AppController', () => {
-  let appController: AppController;
+  let heroesController: HeroesController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+      imports: [HeroModule, GrpcReflectionModule.register(grpcClientOptions)],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    heroesController = app.get<HeroesController>(HeroesController);
   });
 
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+      expect(heroesController.findAll()).toBe([
+        { id: 1, name: 'John' },
+        { id: 2, name: 'Doe' },
+      ]);
     });
   });
 });
