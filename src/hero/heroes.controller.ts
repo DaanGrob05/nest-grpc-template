@@ -10,14 +10,18 @@ export class HeroesController {
     { id: 2, name: 'Doe' },
   ];
 
-  @GrpcMethod('HeroService', 'FindOne')
+  @GrpcMethod('HeroesService')
   findOne(data: HeroById): Hero {
-    console.log(data);
+    const result = this.heroes.find(({ id }) => id === data.id);
 
-    return this.heroes.find(({ id }) => id === data.id);
+    if (result) {
+      return result;
+    } else {
+      return { id: 0, name: 'Not Found' };
+    }
   }
 
-  @GrpcMethod('HeroService', 'FindAll')
+  @GrpcMethod('HeroesService', 'FindAll')
   findAll(): Observable<Hero> {
     return from(this.heroes);
   }
